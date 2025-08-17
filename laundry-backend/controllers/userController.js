@@ -91,10 +91,22 @@ const getUserData = async (req, res, next) =>  {
 
 const logout = async (req, res, next) => {
     try {
-        res.clearCookie('accessToken');
-        res.status(200).json({ success: true, message: "User logout successfully ..." })
+        // Clear the cookie
+        res.clearCookie('accessToken', {
+            httpOnly: true,
+            sameSite: 'none',
+            secure: true  // Must be true if sameSite is none
+        });
+        
+        // Optionally: Add token to a blacklist (if you want to invalidate tokens)
+        // await TokenBlacklist.create({ token: req.cookies.accessToken });
+        
+        res.status(200).json({ 
+            success: true, 
+            message: "User logout successfully ..." 
+        });
     } catch (error) {
-        next(error)
+        next(error);
     }
 };
 
