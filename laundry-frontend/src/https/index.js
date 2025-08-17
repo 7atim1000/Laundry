@@ -52,5 +52,7 @@ export const getOrders = () => api.get('/api/order');
 export const updateOrder = ({orderId, orderStatus}) => api.put(`/api/order/${orderId}`, {orderStatus});
 
 // Transaction Endpoint
-export const addTransaction = (data) => api.post('/api/transactions', data);
+export const addTransaction = (data) => api.post('/api/transactions/add-transaction', data);
+
+
 
