@@ -33,8 +33,11 @@ const Headers = () => {
     });
 
     const handleLogout = () => {
+    if (!logOutMutation.isLoading) {
+         document.cookie = 'accessToken=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         logOutMutation.mutate();
     }
+}
 
     // userSlice (reducer)
     const userData = useSelector(state => state.user);
