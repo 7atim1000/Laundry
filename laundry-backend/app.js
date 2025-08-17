@@ -19,7 +19,7 @@ connectCloudinary();
 // cors policy to unblock response
 app.use(cors({
     credentials: true,
-    origin: ['https://laundry-8sch.onrender.com']
+    origin: ['https://laundry-sys.onrender.com']
  }))
 
 
